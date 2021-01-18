@@ -18,8 +18,9 @@ module BoardUI
     def create_block(color, is_peg)
         block_char = "██"
         peg_char = "▃▃"
+        empty_char = "__"
         if is_peg
-            color.empty? ? "__" : peg_char.send(color)
+            color.empty? ? empty_char : peg_char.send(color)
         else
             block_char.send(color)
         end
@@ -36,6 +37,7 @@ end
 
 module InputUI
     def get_user_input
-        gets.chomp.downcase.split(",")
+      puts "Enter your guess (separate colors with one comma and one space): "
+        gets.chomp.downcase.split(", ")
     end
 end
