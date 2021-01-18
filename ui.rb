@@ -6,7 +6,7 @@ module BoardUI
             answer = row[0]
             peg = row[1]
 
-            puts answer_string(answer, peg)
+            puts print_row(answer, peg)
         end
     end
 
@@ -24,7 +24,7 @@ module BoardUI
             block_char.send(color)
         end
     end
-    def answer_string(colors, pegs)
+    def print_row(colors, pegs)
         "+----+----+----+----+++----+----+----+----+ \n" \
         "| #{create_block(colors[0], false)} | #{create_block(colors[1], false)} | #{create_block(colors[2], false)} | #{create_block(colors[3], false)} |" \
         "|| #{create_block(pegs[0], true)} | #{create_block(pegs[1], true)} | #{create_block(pegs[2], true)} | #{create_block(pegs[3], true)} |"
