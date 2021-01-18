@@ -11,7 +11,7 @@ module BoardUI
     end
 
     def print_end_row
-        puts "+----+----+----+----+ \n"
+        puts row_divider
     end
 
     private
@@ -24,8 +24,11 @@ module BoardUI
             block_char.send(color)
         end
     end
+    def row_divider
+        "+----+----+----+----+++----+----+----+----+ \n"
+    end
     def print_row(colors, pegs)
-        "+----+----+----+----+++----+----+----+----+ \n" \
+        row_divider + \
         "| #{create_block(colors[0], false)} | #{create_block(colors[1], false)} | #{create_block(colors[2], false)} | #{create_block(colors[3], false)} |" \
         "|| #{create_block(pegs[0], true)} | #{create_block(pegs[1], true)} | #{create_block(pegs[2], true)} | #{create_block(pegs[3], true)} |"
     end
