@@ -1,7 +1,7 @@
 require_relative "ui.rb"
 require_relative "game.rb"
-include BoardUI
-include InputUI
+include UI::Board
+include UI::Input
 
 def play_round(match)
     begin
