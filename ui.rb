@@ -9,29 +9,26 @@ module BoardUI
             puts print_row(answer, peg)
         end
     end
-
     def print_end_row
         puts row_divider
     end
 
     private
-    def create_block(color, is_peg)
-        block_char = "██"
+    def draw_block(color)
+        "██".send(color)
+    end
+    def draw_peg(color)
         peg_char = "▃▃"
         empty_char = "__"
-        if is_peg
-            color.empty? ? empty_char : peg_char.send(color)
-        else
-            block_char.send(color)
-        end
+        color.empty? ? empty_char : peg_char.send(color)
     end
     def row_divider
         "+----+----+----+----+++----+----+----+----+ \n"
     end
     def print_row(colors, pegs)
         row_divider + \
-        "| #{create_block(colors[0], false)} | #{create_block(colors[1], false)} | #{create_block(colors[2], false)} | #{create_block(colors[3], false)} |" \
-        "|| #{create_block(pegs[0], true)} | #{create_block(pegs[1], true)} | #{create_block(pegs[2], true)} | #{create_block(pegs[3], true)} |"
+        "| #{draw_block(colors[0])} | #{draw_block(colors[1])} | #{draw_block(colors[2])} | #{draw_block(colors[3])} |" \
+        "|| #{draw_peg(pegs[0])} | #{draw_peg(pegs[1])} | #{draw_peg(pegs[2])} | #{draw_peg(pegs[3])} |"
     end
 end
 
