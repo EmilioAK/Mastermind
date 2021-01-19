@@ -15,7 +15,7 @@ end
 
 def main
     match = Match.new
-    until match.winner
+    until match.match_won
         play_round(match)
     end
     print_end_row

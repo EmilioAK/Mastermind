@@ -1,9 +1,9 @@
 class Match
-    attr_reader :winner, :current_board
+    attr_reader :match_won, :current_board
     def initialize(code = [])
         @colors = ["green", "red", "yellow", "blue", "black", "white"]
         @current_board = []
-        @winner = nil
+        @match_won = false
         
         @code = code.empty? ? @colors.sample(4) : code
         @player_is_coder = code.any? 
@@ -22,11 +22,11 @@ class Match
     private
     def round(player_input, player)
         if player_input == @code
-            @winner = player
+            @match_won = true
         else
             @current_board << [player_input, make_pegs(player_input)]
             if @current_board.count >= 9
-                @winner = player
+                @match_won = true
             end
         end
     end
