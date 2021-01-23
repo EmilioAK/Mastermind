@@ -3,6 +3,7 @@ require "colorize"
 module UI
     module Board
         def print_board(board)
+            puts `clear`
             board.each do |row|
                 answer = row[0]
                 peg = row[1]
