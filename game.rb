@@ -20,12 +20,13 @@ class Match
 
   private
 
-  def round(player_input, _player)
+  def round(player_input, player)
     @current_board << [player_input, make_pegs(player_input)]
     if player_input == @code
-      @winner = 'player'
+      @winner = player
     elsif @current_board.count >= 9
-      @winner = 'computer'
+      # There is probably a way to make player and computer a testable dichotomy
+      @player_is_coder ? @winner = 'Player' : @winner = 'Computer'
     end
   end
 

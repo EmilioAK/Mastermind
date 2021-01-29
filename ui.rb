@@ -28,7 +28,7 @@ module UI
     def game_over(match)
       print_board(match.current_board)
       puts row_divider
-      if match.winner == 'player'
+      if match.winner == 'Player'
         puts 'You won! Good job!'
       else
         puts 'The computer beat you! Better luck next time!'
