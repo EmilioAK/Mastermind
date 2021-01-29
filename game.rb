@@ -1,5 +1,5 @@
 class Match
-  attr_reader :current_board, :winner
+  attr_reader :current_board, :winner, :colors
 
   def initialize(code = [])
     @colors = %w[green red yellow blue black white]
@@ -14,7 +14,6 @@ class Match
     if @player_is_coder
       computer_play
     else
-      validate_input(player_input)
       round(player_input, 'Player')
     end
   end
@@ -22,11 +21,11 @@ class Match
   private
 
   def round(player_input, _player)
+    @current_board << [player_input, make_pegs(player_input)]
     if player_input == @code
       @winner = 'player'
-    else
-      @current_board << [player_input, make_pegs(player_input)]
-      @winner = 'computer' if @current_board.count >= 9
+    elsif @current_board.count >= 9
+      @winner = 'computer'
     end
   end
 
@@ -44,11 +43,5 @@ class Match
         ''
       end
     end.shuffle
-  end
-
-  def validate_input(input)
-    raise 'Input not a list of size 4' if input.count != 4
-    raise 'Invalid colors entered' unless input.all? { |e| @colors.include?(e) }
-    raise 'Duplicate entries not allowed' unless input.uniq.size == input.size
   end
 end
