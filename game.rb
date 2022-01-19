@@ -10,7 +10,7 @@ class Match
   end
 
   def play_round(player_input)
-    @current_board << [player_input, make_pegs(player_input)]
+    @current_board << { answer: player_input, pegs: make_pegs(player_input) }
     if player_input == @code
       @winner = 'Player'
     elsif @current_board.count >= @turns

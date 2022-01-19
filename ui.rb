@@ -28,10 +28,10 @@ module UI
       board = match.current_board
       puts `clear`
       board.each_with_index do |row, index|
-        answer = row[0]
-        peg = row[1]
+        answer = row[:answer]
+        pegs = row[:pegs]
 
-        puts "#{print_row(answer, peg)} " + (index == board.size - 1 ? "#{board.count} / #{match.turns} turns left" : '')
+        puts "#{print_row(answer, pegs)} " + (index == board.size - 1 ? "#{board.count} / #{match.turns} turns left" : '')
       end
     end
 
