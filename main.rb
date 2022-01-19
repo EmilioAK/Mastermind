@@ -4,7 +4,6 @@ include UI::Board
 include UI::Input
 
 def main
-  intro
   match = Match.new
   play_round(match) until match.winner
   game_over(match)
