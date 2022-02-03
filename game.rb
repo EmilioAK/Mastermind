@@ -11,14 +11,18 @@ class Match
 
   def play_round(player_input)
     @current_board << { answer: player_input, pegs: make_pegs(player_input) }
+    assign_winner(player_input)
+  end
+
+  private
+
+  def assign_winner(player_input)
     if player_input == @code
       @winner = 'Player'
     elsif @current_board.count >= @turns
       @winner = 'Computer'
     end
   end
-
-  private
 
   def make_pegs(player_input)
     player_input.map.with_index do |color, index|
